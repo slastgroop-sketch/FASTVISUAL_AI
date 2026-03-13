@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASTVISUAL_AI — AI-решения для бизнеса</title>
+    <meta name="description" content="Видео, боты, визуал, лендинги под ключ за 1–2 дня">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; 
+            color: #ffffff;
+            background: #0a0a0a;
+        }
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-deep: #0f0b1a;
+            --accent-neon: #00e5ff;
+            --accent-purple: #8b5cf6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --card-bg: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f0b1a 0%, #1a0b2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%2300e5ff" stroke-width="1"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2300e5ff" stroke-width="1"/></svg>') repeat;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .hero-content { max-width: 800px; z-index: 1; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #00e5ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            animation: fadeInUp 1s ease-out;
+        }
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-neon);
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid var(--accent-neon);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0,229,255,0.3);
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .cta-button:hover {
+            background: var(--accent-neon);
+            color: #0a0a0a;
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0,229,255,0.6);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            animation: fadeInUp 1.6s ease-out;
+            border: 1px solid var(--glass-border);
+        }
+        .social-proof-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--bg-deep);
+        }
+        .features-container { max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover { 
+            transform: translateY(-10px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 30px rgba(0,229,255,0.2);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-neon);
+        }
+        .feature-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--bg-dark);
+        }
+        .pricing-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-neon);
+            margin: 2rem 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--bg-deep);
+        }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            margin: 2rem 0;
+        }
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-neon);
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0f0b1a, #1a0b2e);
+            text-align: center;
+            color: white;
+            border-top: 1px solid var(--accent-neon);
+        }
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI-решения для бизнеса: видео, боты, визуал</h1>
+            <p>Получайте заявки 24/7 без съёмок, студий и разработчиков</p>
+            <a href="https://t.me/fastvisual_ai_bot" class="cta-button">Запустить бота</a>
+            
+            <div class="social-proof">
+                <p class="social-proof-text">🔥 Уже помогаем бизнесу расти</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <h2 class="section-title">Что я делаю</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3 class="feature-title">AI-видео для бизнеса</h3>
+                    <p class="feature-desc">Рилсы, визитки, аватары — без студий и съёмок. Готово за 1 день.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Telegram-боты под ключ</h3>
+                    <p class="feature-desc">Автоматический сбор заявок, автоворонки, ответы 24/7.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3 class="feature-title">Уникальный визуал</h3>
+                    <p class="feature-desc">Картинки, обложки, посты — под ваш стиль, без Canva.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Мини-лендинги за 1–2 дня</h3>
+                    <p class="feature-desc">Одностраничники для услуг и продуктов.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">Упаковка профиля</h3>
+                    <p class="feature-desc">Аватар, шапка, описание, стиль — под ключ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="pricing-container">
+            <h2 class="section-title">Цены</h2>
+            <div class="price">от 5 000 ₽</div>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Индивидуальный расчёт под вашу задачу</p>
+            <a href="https://t.me/fastvisual_ai_bot" class="cta-button">Запустить бота</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">Отзывы</h2>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Сделали видео с моим аватаром за 1 день. Качество отличное, клиенты в восторге!"</p>
+                <p class="testimonial-author">— Елена, магазин «Удачная рыбалка»</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Готовы начать?</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; color: #e0e0e0;">
+            Создаём видео, ботов, лендинги и визуал под ключ за 1–2 дня. 
+            Ваш бизнес работает на вас, даже когда вы спите.
+        </p>
+        <a href="https://t.me/fastvisual_ai_bot" class="cta-button">Запустить бота</a>
+    </section>
+</body>
+</html>
